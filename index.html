@@ -128,7 +128,7 @@ body { font-family:'Barlow','Inter',sans-serif; background:#F2F2F0; display:flex
 .upload-filename { font-size:10px; color:#3D8C2F; display:none; margin-top:3px; font-weight:600; }
 .upload-item.uploaded .upload-filename { display:block; }
 .upload-status { font-size:18px; flex-shrink:0; }
-.upload-item input[type="file"] { position:absolute; inset:0; opacity:0; cursor:pointer; width:100%; height:100%; }
+.upload-item input[type="file"] { display:none; }
 .optional-tag {
   font-size:9px; font-weight:700; color:#5b6476; background:#E0E0DE;
   padding:2px 7px; border-radius:3px; text-transform:uppercase; letter-spacing:.08em;
@@ -356,7 +356,7 @@ body { font-family:'Barlow','Inter',sans-serif; background:#F2F2F0; display:flex
         <p class="upload-block-sub">Sube cada documento en su campo. Formatos aceptados: PDF, JPG, PNG. Máx. 10 MB por archivo.</p>
         <div class="upload-grid">
 
-          <div class="upload-item" onclick="triggerUpload('file-ife')">
+          <div class="upload-item" onclick="triggerUpload('file-ife')" style="cursor:pointer;">
             <div class="upload-icon">🪪</div>
             <div class="upload-info">
               <span class="upload-label">Identificación oficial vigente <span style="color:#85c440;">*</span></span>
@@ -367,7 +367,7 @@ body { font-family:'Barlow','Inter',sans-serif; background:#F2F2F0; display:flex
             <input type="file" id="file-ife" accept=".pdf,.jpg,.jpeg,.png" onchange="onFileSelected(this,'ife')">
           </div>
 
-          <div class="upload-item" onclick="triggerUpload('file-domicilio-f')">
+          <div class="upload-item" onclick="triggerUpload('file-domicilio-f')" style="cursor:pointer;">
             <div class="upload-icon">🏠</div>
             <div class="upload-info">
               <span class="upload-label">Comprobante de domicilio <span style="color:#85c440;">*</span></span>
@@ -378,7 +378,7 @@ body { font-family:'Barlow','Inter',sans-serif; background:#F2F2F0; display:flex
             <input type="file" id="file-domicilio-f" accept=".pdf,.jpg,.jpeg,.png" onchange="onFileSelected(this,'domicilio-f')">
           </div>
 
-          <div class="upload-item" onclick="triggerUpload('file-opinion-f')">
+          <div class="upload-item" onclick="triggerUpload('file-opinion-f')" style="cursor:pointer;">
             <div class="upload-icon">📄</div>
             <div class="upload-info">
               <span class="upload-label">Opinión de cumplimiento SAT <span style="color:#85c440;">*</span></span>
@@ -389,7 +389,7 @@ body { font-family:'Barlow','Inter',sans-serif; background:#F2F2F0; display:flex
             <input type="file" id="file-opinion-f" accept=".pdf,.jpg,.jpeg,.png" onchange="onFileSelected(this,'opinion-f')">
           </div>
 
-          <div class="upload-item" onclick="triggerUpload('file-csf-f')">
+          <div class="upload-item" onclick="triggerUpload('file-csf-f')" style="cursor:pointer;">
             <div class="upload-icon">📋</div>
             <div class="upload-info">
               <span class="upload-label">Constancia de situación fiscal <span style="color:#85c440;">*</span></span>
@@ -400,7 +400,7 @@ body { font-family:'Barlow','Inter',sans-serif; background:#F2F2F0; display:flex
             <input type="file" id="file-csf-f" accept=".pdf,.jpg,.jpeg,.png" onchange="onFileSelected(this,'csf-f')">
           </div>
 
-          <div class="upload-item" onclick="triggerUpload('file-clabe-f')">
+          <div class="upload-item" onclick="triggerUpload('file-clabe-f')" style="cursor:pointer;">
             <div class="upload-icon">🏦</div>
             <div class="upload-info">
               <span class="upload-label">Carátula de estado de cuenta bancario <span style="color:#85c440;">*</span></span>
@@ -423,7 +423,7 @@ body { font-family:'Barlow','Inter',sans-serif; background:#F2F2F0; display:flex
         <p class="upload-block-sub">Sube cada documento en su campo. Formatos aceptados: PDF, JPG, PNG. Máx. 10 MB por archivo.</p>
         <div class="upload-grid">
 
-          <div class="upload-item" onclick="triggerUpload('file-acta')">
+          <div class="upload-item" onclick="triggerUpload('file-acta')" style="cursor:pointer;">
             <div class="upload-icon">📜</div>
             <div class="upload-info">
               <span class="upload-label">Acta constitutiva con Registro Público de Comercio <span style="color:#85c440;">*</span></span>
@@ -434,7 +434,7 @@ body { font-family:'Barlow','Inter',sans-serif; background:#F2F2F0; display:flex
             <input type="file" id="file-acta" accept=".pdf,.jpg,.jpeg,.png" onchange="onFileSelected(this,'acta')">
           </div>
 
-          <div class="upload-item" onclick="triggerUpload('file-ife-rl')">
+          <div class="upload-item" onclick="triggerUpload('file-ife-rl')" style="cursor:pointer;">
             <div class="upload-icon">🪪</div>
             <div class="upload-info">
               <span class="upload-label">Identificación oficial del representante legal <span style="color:#85c440;">*</span></span>
@@ -445,7 +445,7 @@ body { font-family:'Barlow','Inter',sans-serif; background:#F2F2F0; display:flex
             <input type="file" id="file-ife-rl" accept=".pdf,.jpg,.jpeg,.png" onchange="onFileSelected(this,'ife-rl')">
           </div>
 
-          <div class="upload-item optional" onclick="triggerUpload('file-poder')">
+          <div class="upload-item optional" onclick="triggerUpload('file-poder')" style="cursor:pointer;">
             <div class="upload-icon">⚖️</div>
             <div class="upload-info">
               <span class="upload-label">Poder notarial</span>
@@ -457,7 +457,7 @@ body { font-family:'Barlow','Inter',sans-serif; background:#F2F2F0; display:flex
             <input type="file" id="file-poder" accept=".pdf,.jpg,.jpeg,.png" onchange="onFileSelected(this,'poder')">
           </div>
 
-          <div class="upload-item" onclick="triggerUpload('file-opinion-m')">
+          <div class="upload-item" onclick="triggerUpload('file-opinion-m')" style="cursor:pointer;">
             <div class="upload-icon">📄</div>
             <div class="upload-info">
               <span class="upload-label">Opinión de cumplimiento SAT <span style="color:#85c440;">*</span></span>
@@ -468,7 +468,7 @@ body { font-family:'Barlow','Inter',sans-serif; background:#F2F2F0; display:flex
             <input type="file" id="file-opinion-m" accept=".pdf,.jpg,.jpeg,.png" onchange="onFileSelected(this,'opinion-m')">
           </div>
 
-          <div class="upload-item" onclick="triggerUpload('file-domicilio-m')">
+          <div class="upload-item" onclick="triggerUpload('file-domicilio-m')" style="cursor:pointer;">
             <div class="upload-icon">🏠</div>
             <div class="upload-info">
               <span class="upload-label">Comprobante de domicilio <span style="color:#85c440;">*</span></span>
@@ -479,7 +479,7 @@ body { font-family:'Barlow','Inter',sans-serif; background:#F2F2F0; display:flex
             <input type="file" id="file-domicilio-m" accept=".pdf,.jpg,.jpeg,.png" onchange="onFileSelected(this,'domicilio-m')">
           </div>
 
-          <div class="upload-item" onclick="triggerUpload('file-csf-m')">
+          <div class="upload-item" onclick="triggerUpload('file-csf-m')" style="cursor:pointer;">
             <div class="upload-icon">📋</div>
             <div class="upload-info">
               <span class="upload-label">Constancia de situación fiscal <span style="color:#85c440;">*</span></span>
@@ -490,7 +490,7 @@ body { font-family:'Barlow','Inter',sans-serif; background:#F2F2F0; display:flex
             <input type="file" id="file-csf-m" accept=".pdf,.jpg,.jpeg,.png" onchange="onFileSelected(this,'csf-m')">
           </div>
 
-          <div class="upload-item" onclick="triggerUpload('file-clabe-m')">
+          <div class="upload-item" onclick="triggerUpload('file-clabe-m')" style="cursor:pointer;">
             <div class="upload-icon">🏦</div>
             <div class="upload-info">
               <span class="upload-label">Carátula de estado de cuenta bancario <span style="color:#85c440;">*</span></span>
@@ -570,7 +570,10 @@ function selectRegime(r) {
 }
 
 // Trigger input file oculto
-function triggerUpload(id) { document.getElementById(id).click(); }
+function triggerUpload(id) {
+  const input = document.getElementById(id);
+  input.click();
+}
 
 // Cuando se selecciona un archivo
 function onFileSelected(input, key) {
