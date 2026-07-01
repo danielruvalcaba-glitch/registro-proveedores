@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registro de Proveedor Logístico — 99minutos</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Barlow','Inter',sans-serif; background:#F2F2F0; display:flex; justify-content:center; min-height:100vh; padding:32px 16px; }
+.page { width:800px; background:#fff; border-radius:16px; overflow:hidden; box-shadow:0 8px 40px rgba(31,38,59,0.13); }
+
+/* HERO */
+.hero { background:#1f263b; padding:36px 44px 28px; display:flex; align-items:flex-start; justify-content:space-between; gap:24px; }
+.hero-left { display:flex; flex-direction:column; gap:6px; }
+.logo-mark { width:52px; height:52px; background:#85c440; border-radius:50%; display:flex; align-items:center; justify-content:center; margin-bottom:6px; }
+.logo-mark span { font-size:17px; font-weight:800; color:#1f263b; letter-spacing:-0.5px; }
+.brand-name { font-size:13px; font-weight:700; color:#fff; letter-spacing:.06em; }
+.brand-sub { font-size:9px; color:#85c440; letter-spacing:.14em; text-transform:uppercase; font-weight:600; }
+.hero-right { flex:1; max-width:500px; }
+.hero-pill { display:inline-block; background:#85c440; color:#1f263b; font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; padding:4px 14px; border-radius:4px; margin-bottom:14px; }
+.hero h1 { font-size:32px; font-weight:800; color:#fff; line-height:1.1; margin-bottom:10px; }
+.hero h1 span { color:#85c440; }
+.hero p { font-size:13px; color:#bec1c8; line-height:1.6; max-width:420px; }
+
+/* STRIP */
+.intro-strip { background:#85c440; padding:16px 44px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+.intro-strip p { font-size:13px; font-weight:700; color:#1f263b; line-height:1.4; }
+.intro-strip .contacts { display:flex; flex-direction:column; align-items:flex-end; gap:3px; }
+.intro-strip .contacts span { font-size:11px; font-weight:600; color:#1f263b; }
+.intro-strip .contacts .label { font-size:9px; letter-spacing:.1em; text-transform:uppercase; color:#3D8C2F; font-weight:700; margin-bottom:2px; }
+
+/* STEPS */
+.steps-section { background:#fff; padding:32px 44px 24px; }
+.section-label { display:inline-block; background:#1f263b; color:#fff; font-size:9px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; padding:4px 12px; border-radius:4px; margin-bottom:14px; }
+.steps-title { font-size:22px; font-weight:800; color:#1f263b; margin-bottom:6px; }
+.steps-title span { color:#85c440; }
+.steps-sub { font-size:12px; color:#5b6476; margin-bottom:22px; line-height:1.5; }
+.steps-row { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+.step-card { background:#F2F2F0; border-radius:12px; padding:18px 16px; border-top:4px solid #85c440; }
+.step-num { font-size:11px; font-weight:800; color:#85c440; letter-spacing:.08em; text-transform:uppercase; margin-bottom:6px; }
+.step-title { font-size:14px; font-weight:700; color:#1f263b; margin-bottom:6px; line-height:1.2; }
+.step-desc { font-size:11px; color:#5b6476; line-height:1.5; }
+
+/* DOCS REFERENCE */
+.docs-section { background:#1f263b; padding:32px 44px; display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+.docs-header { grid-column:1/-1; margin-bottom:4px; }
+.docs-header .section-label-dark { display:inline-block; background:#12344A; color:#85c440; font-size:9px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; padding:4px 12px; border-radius:4px; margin-bottom:12px; }
+.docs-header h2 { font-size:22px; font-weight:800; color:#fff; line-height:1.2; }
+.docs-header h2 span { color:#85c440; }
+.docs-header p { font-size:12px; color:#bec1c8; margin-top:6px; line-height:1.5; }
+.doc-card { background:#12344A; border-radius:12px; padding:20px; border-left:4px solid #85c440; }
+.doc-card-title { font-size:13px; font-weight:800; color:#85c440; margin-bottom:14px; display:flex; align-items:center; gap:8px; }
+.doc-card-title .icon { width:26px; height:26px; background:#85c440; border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:13px; flex-shrink:0; }
+.doc-list { list-style:none; display:flex; flex-direction:column; gap:8px; }
+.doc-list li { display:flex; align-items:flex-start; gap:10px; font-size:11px; color:#bec1c8; line-height:1.5; }
+.doc-list li .check { width:16px; height:16px; background:#85c440; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:9px; font-weight:700; color:#1f263b; flex-shrink:0; margin-top:1px; }
+
+/* FORM SECTION */
+.registro-section { background:#F2F2F0; padding:36px 44px; }
+.registro-inner { background:#fff; border-radius:16px; overflow:hidden; border:1.5px solid #EBEBEB; }
+.registro-header { background:#1f263b; padding:24px 32px; display:flex; align-items:center; justify-content:space-between; gap:20px; }
+.registro-pill { display:inline-block; background:#85c440; color:#1f263b; font-size:9px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; padding:3px 10px; border-radius:3px; margin-bottom:8px; }
+.registro-header h2 { font-size:20px; font-weight:800; color:#fff; line-height:1.2; }
+.registro-header h2 span { color:#85c440; }
+.registro-header p { font-size:11px; color:#bec1c8; margin-top:6px; line-height:1.5; }
+.registro-badge { background:#85c440; border-radius:12px; padding:16px 20px; text-align:center; min-width:130px; }
+.registro-badge .num { font-size:28px; font-weight:800; color:#1f263b; line-height:1; }
+.registro-badge .lbl { font-size:9px; font-weight:700; color:#1f263b; text-transform:uppercase; letter-spacing:.08em; margin-top:4px; }
+.form-body { padding:28px 32px; }
+.form-intro { font-size:12px; color:#5b6476; line-height:1.6; margin-bottom:22px; padding-bottom:16px; border-bottom:1px solid #EBEBEB; }
+.form-intro strong { color:#1f263b; }
+.form-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:14px; }
+.form-group { display:flex; flex-direction:column; gap:5px; }
+.form-group.full { grid-column:1/-1; }
+.form-group label { font-size:10px; font-weight:700; color:#1f263b; text-transform:uppercase; letter-spacing:.08em; }
+.form-group label .req { color:#85c440; margin-left:2px; }
+.form-group input, .form-group select, .form-group textarea {
+  font-family:'Barlow',sans-serif; font-size:12px; color:#1f263b;
+  background:#F2F2F0; border:1.5px solid #E0E0DE; border-radius:8px; padding:10px 14px;
+  outline:none; transition:border-color .2s;
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color:#85c440; background:#fff; }
+.form-group textarea { resize:none; }
+.form-group select { appearance:none; cursor:pointer; }
+
+/* REGIME TOGGLE */
+.regime-toggle { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:20px; }
+.regime-btn { border:2px solid #E0E0DE; border-radius:10px; padding:14px 16px; cursor:pointer; background:#F2F2F0; text-align:left; transition:all .2s; font-family:'Barlow',sans-serif; }
+.regime-btn:hover { border-color:#85c440; background:#fff; }
+.regime-btn.active { border-color:#85c440; background:#fff; }
+.regime-btn .rb-icon { font-size:20px; margin-bottom:6px; display:block; }
+.regime-btn .rb-title { font-size:13px; font-weight:700; color:#1f263b; display:block; }
+.regime-btn .rb-sub { font-size:10px; color:#5b6476; display:block; margin-top:2px; }
+.regime-btn.active .rb-title { color:#85c440; }
+
+/* DIVIDER */
+.form-divider { border:none; border-top:1px solid #EBEBEB; margin:22px 0; }
+
+/* DOCS UPLOAD BLOCK */
+.upload-block-title {
+  font-size:13px; font-weight:800; color:#1f263b; margin-bottom:4px;
+  display:flex; align-items:center; gap:8px;
+}
+.upload-block-title .badge {
+  background:#85c440; color:#1f263b; font-size:9px; font-weight:700;
+  padding:2px 8px; border-radius:3px; text-transform:uppercase; letter-spacing:.08em;
+}
+.upload-block-sub { font-size:11px; color:#5b6476; margin-bottom:16px; line-height:1.5; }
+.upload-grid { display:flex; flex-direction:column; gap:10px; }
+.upload-item {
+  background:#F2F2F0; border:1.5px solid #E0E0DE; border-radius:10px;
+  padding:12px 16px; display:flex; align-items:center; gap:14px;
+  transition:border-color .2s, background .2s; cursor:pointer;
+  position:relative;
+}
+.upload-item:hover { border-color:#85c440; background:#fff; }
+.upload-item.uploaded { border-color:#85c440; background:#f0fae8; }
+.upload-item.optional { border-style:dashed; }
+.upload-icon {
+  width:36px; height:36px; border-radius:8px; background:#1f263b;
+  display:flex; align-items:center; justify-content:center; font-size:17px; flex-shrink:0;
+}
+.upload-item.uploaded .upload-icon { background:#85c440; }
+.upload-info { flex:1; min-width:0; }
+.upload-label { font-size:12px; font-weight:700; color:#1f263b; display:block; }
+.upload-hint { font-size:10px; color:#5b6476; display:block; margin-top:2px; }
+.upload-filename { font-size:10px; color:#3D8C2F; display:none; margin-top:3px; font-weight:600; }
+.upload-item.uploaded .upload-filename { display:block; }
+.upload-status { font-size:18px; flex-shrink:0; }
+.upload-item input[type="file"] { position:absolute; inset:0; opacity:0; cursor:pointer; width:100%; height:100%; }
+.optional-tag {
+  font-size:9px; font-weight:700; color:#5b6476; background:#E0E0DE;
+  padding:2px 7px; border-radius:3px; text-transform:uppercase; letter-spacing:.08em;
+  flex-shrink:0;
+}
+
+/* DOCS PANEL — switch by regime */
+#docs-fisica { display:flex; flex-direction:column; gap:0; }
+#docs-moral  { display:none; flex-direction:column; gap:0; }
+
+/* SUBMIT */
+.submit-row { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-top:24px; padding-top:20px; border-top:1px solid #EBEBEB; }
+.submit-note { font-size:11px; color:#5b6476; line-height:1.5; }
+.submit-note strong { color:#1f263b; }
+.btn-submit {
+  display:inline-flex; align-items:center; gap:10px;
+  background:#85c440; color:#1f263b;
+  font-family:'Barlow',sans-serif; font-size:13px; font-weight:800; letter-spacing:.04em; text-transform:uppercase;
+  padding:14px 28px; border-radius:8px; border:none; cursor:pointer; white-space:nowrap;
+  transition:background .2s, transform .1s;
+}
+.btn-submit:hover { background:#75b135; transform:translateY(-1px); }
+.btn-submit:active { transform:translateY(0); }
+.btn-submit .arrow { font-size:16px; }
+.btn-submit:disabled { background:#bec1c8; cursor:not-allowed; transform:none; }
+
+/* PROGRESS BAR */
+.progress-wrap { display:none; margin-top:16px; }
+.progress-bar-bg { background:#E0E0DE; border-radius:99px; height:6px; overflow:hidden; }
+.progress-bar-fill { background:#85c440; height:100%; width:0%; transition:width .4s; border-radius:99px; }
+.progress-label { font-size:11px; color:#5b6476; margin-top:6px; text-align:center; }
+
+/* SUCCESS */
+.form-success { display:none; text-align:center; padding:48px 32px; }
+.success-icon { width:64px; height:64px; background:#85c440; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:28px; margin:0 auto 16px; }
+.success-title { font-size:22px; font-weight:800; color:#1f263b; margin-bottom:8px; }
+.success-title span { color:#85c440; }
+.success-desc { font-size:13px; color:#5b6476; line-height:1.7; max-width:420px; margin:0 auto; }
+
+/* FOOTER */
+.footer-green { background:#85c440; padding:20px 44px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+.footer-green .msg { font-size:14px; font-weight:700; color:#1f263b; line-height:1.3; }
+.footer-green .msg span { font-style:italic; font-weight:400; }
+.footer-bar { background:#1f263b; padding:12px 44px; display:flex; align-items:center; justify-content:space-between; }
+.footer-bar .url { font-size:11px; font-weight:600; color:#85c440; }
+.footer-bar .countries { font-size:9px; color:#5b6476; letter-spacing:.12em; text-transform:uppercase; }
+.footer-logo { width:32px; height:32px; background:#85c440; border-radius:50%; display:flex; align-items:center; justify-content:center; }
+.footer-logo span { font-size:11px; font-weight:800; color:#1f263b; }
+
+@media print { body{background:#fff;padding:0;} .page{box-shadow:none;border-radius:0;width:100%;} }
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="logo-mark"><span>99</span></div>
+    <div class="brand-name">99minutos</div>
+    <div class="brand-sub">Proveedor Logístico</div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-pill">📦 Registro de Proveedores · México 2026</div>
+    <h1>Bienvenido a la red<br>logística más <span>ágil</span><br>de LATAM</h1>
+    <p>Nos alegra que quieras formar parte de nuestra red de proveedores logísticos. Completa el formulario al final — tu documentación llega directamente a nuestro equipo.</p>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="intro-strip">
+  <p>Completa el formulario de registro al final.<br>Tus documentos llegan directo a nuestro Drive.</p>
+  <div class="contacts">
+    <span class="label">📩 Dudas al correo:</span>
+    <span>daniel.ruvalcaba@99minutos.com</span>
+    <span>candelaria.benitez@99minutos.com</span>
+    <span>daniela.diaz@99minutos.com</span>
+  </div>
+</div>
+
+<!-- STEPS -->
+<section class="steps-section">
+  <div class="section-label">Proceso de registro</div>
+  <div class="steps-title">3 pasos para <span>comenzar operaciones</span></div>
+  <p class="steps-sub">Todo desde este documento. Sin correos de ida y vuelta.</p>
+  <div class="steps-row">
+    <div class="step-card">
+      <div class="step-num">Paso 01</div>
+      <div class="step-title">Selecciona tu régimen fiscal</div>
+      <div class="step-desc">Indica si eres Persona Física con Actividad Empresarial o Persona Moral. El formulario se adapta a tus documentos.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">Paso 02</div>
+      <div class="step-title">Sube tus documentos</div>
+      <div class="step-desc">Carga cada documento en su campo correspondiente. Formatos aceptados: PDF, JPG, PNG.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-num">Paso 03</div>
+      <div class="step-title">Validación y alta</div>
+      <div class="step-desc">Procurement revisa tu expediente y te confirma tu ingreso a la red en máximo 1 día hábil.</div>
+    </div>
+  </div>
+</section>
+
+<!-- DOCS REFERENCE -->
+<section class="docs-section">
+  <div class="docs-header">
+    <div class="section-label-dark">📋 Documentación requerida</div>
+    <h2>¿Qué documentos <span>necesitas?</span></h2>
+    <p>Referencia rápida. Todos estos campos aparecen en el formulario de abajo para cargarlos uno por uno.</p>
+  </div>
+  <div class="doc-card">
+    <div class="doc-card-title"><div class="icon">👤</div>Persona Física con Actividad Empresarial</div>
+    <ul class="doc-list">
+      <li><div class="check">✓</div><span>Identificación oficial vigente</span></li>
+      <li><div class="check">✓</div><span>Comprobante de domicilio</span></li>
+      <li><div class="check">✓</div><span>Opinión de cumplimiento SAT</span></li>
+      <li><div class="check">✓</div><span>Constancia de situación fiscal</span></li>
+      <li><div class="check">✓</div><span>Carátula estado de cuenta bancario <em style="color:#85c440;font-style:normal;">(CLABE)</em></span></li>
+    </ul>
+  </div>
+  <div class="doc-card">
+    <div class="doc-card-title"><div class="icon">🏢</div>Persona Moral</div>
+    <ul class="doc-list">
+      <li><div class="check">✓</div><span>Acta constitutiva con Registro Público de Comercio</span></li>
+      <li><div class="check">✓</div><span>Identificación oficial del representante legal</span></li>
+      <li><div class="check">✓</div><span>Poder notarial <em style="color:#85c440;font-style:normal;">(si aplica)</em></span></li>
+      <li><div class="check">✓</div><span>Opinión de cumplimiento SAT</span></li>
+      <li><div class="check">✓</div><span>Comprobante de domicilio</span></li>
+      <li><div class="check">✓</div><span>Constancia de situación fiscal</span></li>
+      <li><div class="check">✓</div><span>Carátula estado de cuenta bancario <em style="color:#85c440;font-style:normal;">(CLABE)</em></span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- FORMULARIO -->
+<section class="registro-section">
+  <div class="registro-inner">
+
+    <div class="registro-header">
+      <div>
+        <div class="registro-pill">✍️ Formulario de Pre-Registro</div>
+        <h2>Completa tu registro <span>aquí</span></h2>
+        <p>Llena tus datos y adjunta cada documento en su campo.<br>Todo llega directo a nuestro equipo de Procurement.</p>
+      </div>
+      <div class="registro-badge">
+        <div class="num">1 día</div>
+        <div class="lbl">Tiempo de respuesta</div>
+      </div>
+    </div>
+
+    <div class="form-body" id="form-body">
+
+      <p class="form-intro">Los campos marcados con <strong style="color:#85c440;">*</strong> son obligatorios. Selecciona primero tu régimen fiscal — el formulario mostrará solo los documentos que aplican para ti.</p>
+
+      <!-- RÉGIMEN -->
+      <div style="margin-bottom:6px;">
+        <label style="font-size:10px;font-weight:700;color:#1f263b;text-transform:uppercase;letter-spacing:.08em;display:block;margin-bottom:8px;">
+          Régimen fiscal <span style="color:#85c440;">*</span>
+        </label>
+        <div class="regime-toggle">
+          <button class="regime-btn active" onclick="selectRegime('fisica')" type="button">
+            <span class="rb-icon">👤</span>
+            <span class="rb-title">Persona Física</span>
+            <span class="rb-sub">Con Actividad Empresarial</span>
+          </button>
+          <button class="regime-btn" onclick="selectRegime('moral')" type="button">
+            <span class="rb-icon">🏢</span>
+            <span class="rb-title">Persona Moral</span>
+            <span class="rb-sub">Empresa / Razón Social</span>
+          </button>
+        </div>
+      </div>
+
+      <hr class="form-divider">
+
+      <!-- DATOS GENERALES -->
+      <div style="font-size:11px;font-weight:700;color:#85c440;text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px;">Datos generales</div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Nombre completo / Razón Social <span class="req">*</span></label>
+          <input type="text" id="f-nombre" placeholder="Ej. Transportes García S.A. de C.V.">
+        </div>
+        <div class="form-group">
+          <label>RFC <span class="req">*</span></label>
+          <input type="text" id="f-rfc" placeholder="Ej. GAXM880312AB3" maxlength="13">
+        </div>
+        <div class="form-group">
+          <label>Correo electrónico <span class="req">*</span></label>
+          <input type="email" id="f-email" placeholder="contacto@empresa.com">
+        </div>
+        <div class="form-group">
+          <label>Teléfono de contacto <span class="req">*</span></label>
+          <input type="tel" id="f-telefono" placeholder="+52 55 0000 0000">
+        </div>
+        <div class="form-group">
+          <label>Ciudad / Estado de operación <span class="req">*</span></label>
+          <input type="text" id="f-ciudad" placeholder="Ej. Guadalajara, Jalisco">
+        </div>
+        <div class="form-group">
+          <label>Tipo de servicio <span class="req">*</span></label>
+          <select id="f-servicio">
+            <option value="" disabled selected>Selecciona una opción</option>
+            <option>Primera Milla</option>
+            <option>Media Milla / Crossdocking</option>
+            <option>Última Milla</option>
+            <option>Carga Pesada / Freight</option>
+            <option>Multiservicio</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label>Flota o capacidad con la que cuentas</label>
+          <textarea id="f-flota" rows="2" placeholder="Ej. 5 unidades NHR, 2 camionetas 3.5 ton, cobertura CDMX y área metropolitana"></textarea>
+        </div>
+      </div>
+
+      <hr class="form-divider">
+
+      <!-- DOCUMENTOS PERSONA FÍSICA -->
+      <div id="docs-fisica">
+        <div class="upload-block-title">
+          Documentos requeridos
+          <span class="badge">Persona Física</span>
+        </div>
+        <p class="upload-block-sub">Sube cada documento en su campo. Formatos aceptados: PDF, JPG, PNG. Máx. 10 MB por archivo.</p>
+        <div class="upload-grid">
+
+          <div class="upload-item" onclick="triggerUpload('file-ife')">
+            <div class="upload-icon">🪪</div>
+            <div class="upload-info">
+              <span class="upload-label">Identificación oficial vigente <span style="color:#85c440;">*</span></span>
+              <span class="upload-hint">INE, pasaporte o cédula profesional vigente</span>
+              <span class="upload-filename" id="name-ife"></span>
+            </div>
+            <span class="upload-status" id="status-ife">📎</span>
+            <input type="file" id="file-ife" accept=".pdf,.jpg,.jpeg,.png" onchange="onFileSelected(this,'ife')">
+          </div>
+
+          <div class="upload-item" onclick="triggerUpload('file-domicilio-f')">
+            <div class="upload-icon">🏠</div>
+            <div class="upload-info">
+              <span class="upload-label">Comprobante de domicilio <span style="color:#85c440;">*</span></span>
+              <span class="upload-hint">No mayor a 3 meses (CFE, agua, teléfono, etc.)</span>
+              <span class="upload-filename" id="name-domicilio-f"></span>
+            </div>
+            <span class="upload-status" id="status-domicilio-f">📎</span>
+            <input type="file" id="file-domicilio-f" accept=".pdf,.jpg,.jpeg,.png" onchange="onFileSelected(this,'domicilio-f')">
+          </div>
+
+          <div class="upload-item" onclick="triggerUpload('file-opinion-f')">
+            <div class="upload-icon">📄</div>
+            <div class="upload-info">
+              <span class="upload-label">Opinión de cumplimiento SAT <span style="color:#85c440;">*</span></span>
+              <span class="upload-hint">Descárgala en sat.gob.mx — debe estar vigente (Positiva)</span>
+              <span class="upload-filename" id="name-opinion-f"></span>
+            </div>
+            <span class="upload-status" id="status-opinion-f">📎</span>
+            <input type="file" id="file-opinion-f" accept=".pdf,.jpg,.jpeg,.png" onchange="onFileSelected(this,'opinion-f')">
+          </div>
+
+          <div class="upload-item" onclick="triggerUpload('file-csf-f')">
+            <div class="upload-icon">📋</div>
+            <div class="upload-info">
+              <span class="upload-label">Constancia de situación fiscal <span style="color:#85c440;">*</span></span>
+              <span class="upload-hint">Descárgala en el portal del SAT con tu RFC y contraseña</span>
+              <span class="upload-filename" id="name-csf-f"></span>
+            </div>
+            <span class="upload-status" id="status-csf-f">📎</span>
+            <input type="file" id="file-csf-f" accept=".pdf,.jpg,.jpeg,.png" onchange="onFileSelected(this,'csf-f')">
+          </div>
+
+          <div class="upload-item" onclick="triggerUpload('file-clabe-f')">
+            <div class="upload-icon">🏦</div>
+            <div class="upload-info">
+              <span class="upload-label">Carátula de estado de cuenta bancario <span style="color:#85c440;">*</span></span>
+              <span class="upload-hint">Debe mostrar claramente la CLABE interbancaria (18 dígitos)</span>
+              <span class="upload-filename" id="name-clabe-f"></span>
+            </div>
+            <span class="upload-status" id="status-clabe-f">📎</span>
+            <input type="file" id="file-clabe-f" accept=".pdf,.jpg,.jpeg,.png" onchange="onFileSelected(this,'clabe-f')">
+          </div>
+
+        </div>
+      </div>
+
+      <!-- DOCUMENTOS PERSONA MORAL -->
+      <div id="docs-moral">
+        <div class="upload-block-title">
+          Documentos requeridos
+          <span class="badge">Persona Moral</span>
+        </div>
+        <p class="upload-block-sub">Sube cada documento en su campo. Formatos aceptados: PDF, JPG, PNG. Máx. 10 MB por archivo.</p>
+        <div class="upload-grid">
+
+          <div class="upload-item" onclick="triggerUpload('file-acta')">
+            <div class="upload-icon">📜</div>
+            <div class="upload-info">
+              <span class="upload-label">Acta constitutiva con Registro Público de Comercio <span style="color:#85c440;">*</span></span>
+              <span class="upload-hint">Incluir todas las páginas con el sello del RPC</span>
+              <span class="upload-filename" id="name-acta"></span>
+            </div>
+            <span class="upload-status" id="status-acta">📎</span>
+            <input type="file" id="file-acta" accept=".pdf,.jpg,.jpeg,.png" onchange="onFileSelected(this,'acta')">
+          </div>
+
+          <div class="upload-item" onclick="triggerUpload('file-ife-rl')">
+            <div class="upload-icon">🪪</div>
+            <div class="upload-info">
+              <span class="upload-label">Identificación oficial del representante legal <span style="color:#85c440;">*</span></span>
+              <span class="upload-hint">INE, pasaporte o cédula profesional vigente del RL</span>
+              <span class="upload-filename" id="name-ife-rl"></span>
+            </div>
+            <span class="upload-status" id="status-ife-rl">📎</span>
+            <input type="file" id="file-ife-rl" accept=".pdf,.jpg,.jpeg,.png" onchange="onFileSelected(this,'ife-rl')">
+          </div>
+
+          <div class="upload-item optional" onclick="triggerUpload('file-poder')">
+            <div class="upload-icon">⚖️</div>
+            <div class="upload-info">
+              <span class="upload-label">Poder notarial</span>
+              <span class="upload-hint">Solo si quien firma no es el representante original del acta</span>
+              <span class="upload-filename" id="name-poder"></span>
+            </div>
+            <span class="optional-tag">Opcional</span>
+            <span class="upload-status" id="status-poder">📎</span>
+            <input type="file" id="file-poder" accept=".pdf,.jpg,.jpeg,.png" onchange="onFileSelected(this,'poder')">
+          </div>
+
+          <div class="upload-item" onclick="triggerUpload('file-opinion-m')">
+            <div class="upload-icon">📄</div>
+            <div class="upload-info">
+              <span class="upload-label">Opinión de cumplimiento SAT <span style="color:#85c440;">*</span></span>
+              <span class="upload-hint">Descárgala en sat.gob.mx — debe estar vigente (Positiva)</span>
+              <span class="upload-filename" id="name-opinion-m"></span>
+            </div>
+            <span class="upload-status" id="status-opinion-m">📎</span>
+            <input type="file" id="file-opinion-m" accept=".pdf,.jpg,.jpeg,.png" onchange="onFileSelected(this,'opinion-m')">
+          </div>
+
+          <div class="upload-item" onclick="triggerUpload('file-domicilio-m')">
+            <div class="upload-icon">🏠</div>
+            <div class="upload-info">
+              <span class="upload-label">Comprobante de domicilio <span style="color:#85c440;">*</span></span>
+              <span class="upload-hint">No mayor a 3 meses, a nombre de la empresa o representante legal</span>
+              <span class="upload-filename" id="name-domicilio-m"></span>
+            </div>
+            <span class="upload-status" id="status-domicilio-m">📎</span>
+            <input type="file" id="file-domicilio-m" accept=".pdf,.jpg,.jpeg,.png" onchange="onFileSelected(this,'domicilio-m')">
+          </div>
+
+          <div class="upload-item" onclick="triggerUpload('file-csf-m')">
+            <div class="upload-icon">📋</div>
+            <div class="upload-info">
+              <span class="upload-label">Constancia de situación fiscal <span style="color:#85c440;">*</span></span>
+              <span class="upload-hint">Descárgala en el portal del SAT con el RFC y contraseña de la empresa</span>
+              <span class="upload-filename" id="name-csf-m"></span>
+            </div>
+            <span class="upload-status" id="status-csf-m">📎</span>
+            <input type="file" id="file-csf-m" accept=".pdf,.jpg,.jpeg,.png" onchange="onFileSelected(this,'csf-m')">
+          </div>
+
+          <div class="upload-item" onclick="triggerUpload('file-clabe-m')">
+            <div class="upload-icon">🏦</div>
+            <div class="upload-info">
+              <span class="upload-label">Carátula de estado de cuenta bancario <span style="color:#85c440;">*</span></span>
+              <span class="upload-hint">Debe mostrar claramente la CLABE interbancaria (18 dígitos) a nombre de la empresa</span>
+              <span class="upload-filename" id="name-clabe-m"></span>
+            </div>
+            <span class="upload-status" id="status-clabe-m">📎</span>
+            <input type="file" id="file-clabe-m" accept=".pdf,.jpg,.jpeg,.png" onchange="onFileSelected(this,'clabe-m')">
+          </div>
+
+        </div>
+      </div>
+
+      <!-- PROGRESS + SUBMIT -->
+      <div class="submit-row">
+        <div class="submit-note">
+          Al enviar, tu expediente se guarda automáticamente<br>
+          en <strong>Google Drive de 99minutos</strong> con una carpeta<br>
+          asignada a tu RFC.
+        </div>
+        <button class="btn-submit" id="btn-submit" onclick="enviarRegistro()">
+          Enviar registro completo <span class="arrow">→</span>
+        </button>
+      </div>
+      <div class="progress-wrap" id="progress-wrap">
+        <div class="progress-bar-bg"><div class="progress-bar-fill" id="progress-fill"></div></div>
+        <div class="progress-label" id="progress-label">Subiendo documentos... 0%</div>
+      </div>
+
+    </div><!-- /form-body -->
+
+    <!-- ÉXITO -->
+    <div class="form-success" id="form-success">
+      <div class="success-icon">✓</div>
+      <div class="success-title">¡Registro <span>enviado con éxito!</span></div>
+      <p class="success-desc">
+        Tu expediente fue recibido y guardado en nuestros sistemas.<br>
+        Recibirás un correo de confirmación en los próximos minutos.<br><br>
+        El equipo de Procurement de 99minutos te contactará en un máximo de<br>
+        <strong style="color:#1f263b;">1 día hábil</strong> para confirmar tu alta como proveedor logístico.<br><br>
+        <span style="font-size:12px;color:#85c440;font-weight:700;">¡Bienvenido a la red!</span>
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER VERDE -->
+<div class="footer-green">
+  <div class="msg">
+    ¿Listo para sumarte a la red logística más grande de LATAM?<br>
+    <span>Juntos construimos entregas que transforman negocios.</span>
+  </div>
+</div>
+<div class="footer-bar">
+  <span class="url">www.99minutos.com</span>
+  <span class="countries">México · Colombia · Chile · Perú</span>
+  <div class="footer-logo"><span>99</span></div>
+</div>
+
+</div><!-- /page -->
+
+<script>
+// ── CONFIGURACIÓN ── reemplaza con tu URL de Apps Script publicado
+const APPS_SCRIPT_URL = "https://script.google.com/a/macros/99minutos.com/s/AKfycbycnWd5IN6cMlpXhKwxgSNLiH3ToCoHqvHdrtXKFooFfS1FrTxC0KTAQf1IWEng14eSwA/exec";
+
+let regimeActual = "fisica";
+const archivosSeleccionados = {}; // { key: File }
+
+// Cambiar régimen
+function selectRegime(r) {
+  regimeActual = r;
+  document.querySelectorAll('.regime-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.regime-btn')[r === 'fisica' ? 0 : 1].classList.add('active');
+  document.getElementById('docs-fisica').style.display = r === 'fisica' ? 'flex' : 'none';
+  document.getElementById('docs-moral').style.display  = r === 'moral'  ? 'flex' : 'none';
+}
+
+// Trigger input file oculto
+function triggerUpload(id) { document.getElementById(id).click(); }
+
+// Cuando se selecciona un archivo
+function onFileSelected(input, key) {
+  const file = input.files[0];
+  if (!file) return;
+  archivosSeleccionados[key] = file;
+  const item = input.closest('.upload-item');
+  item.classList.add('uploaded');
+  document.getElementById('status-' + key).textContent = '✅';
+  document.getElementById('name-' + key).textContent = file.name;
+}
+
+// Leer archivo como base64
+function toBase64(file) {
+  return new Promise((res, rej) => {
+    const r = new FileReader();
+    r.onload = () => res(r.result.split(',')[1]);
+    r.onerror = () => rej(new Error('No se pudo leer: ' + file.name));
+    r.readAsDataURL(file);
+  });
+}
+
+// Validar campos obligatorios de documentos según régimen
+function validarDocs() {
+  const obligatoriosFisica  = ['ife','domicilio-f','opinion-f','csf-f','clabe-f'];
+  const obligatoriosMoral   = ['acta','ife-rl','opinion-m','domicilio-m','csf-m','clabe-m'];
+  const lista = regimeActual === 'fisica' ? obligatoriosFisica : obligatoriosMoral;
+  const faltantes = lista.filter(k => !archivosSeleccionados[k]);
+  return faltantes;
+}
+
+// Nombres legibles para los documentos
+const NOMBRES_DOC = {
+  'ife':         '01_Identificacion_Oficial',
+  'domicilio-f': '02_Comprobante_Domicilio',
+  'opinion-f':   '03_Opinion_Cumplimiento_SAT',
+  'csf-f':       '04_Constancia_Situacion_Fiscal',
+  'clabe-f':     '05_Caratula_Estado_Cuenta_CLABE',
+  'acta':        '01_Acta_Constitutiva_RPC',
+  'ife-rl':      '02_Identificacion_Representante_Legal',
+  'poder':       '03_Poder_Notarial',
+  'opinion-m':   '04_Opinion_Cumplimiento_SAT',
+  'domicilio-m': '05_Comprobante_Domicilio',
+  'csf-m':       '06_Constancia_Situacion_Fiscal',
+  'clabe-m':     '07_Caratula_Estado_Cuenta_CLABE',
+};
+
+async function enviarRegistro() {
+  // Validar datos generales
+  const nombre   = document.getElementById('f-nombre').value.trim();
+  const rfc      = document.getElementById('f-rfc').value.trim();
+  const email    = document.getElementById('f-email').value.trim();
+  const telefono = document.getElementById('f-telefono').value.trim();
+  const ciudad   = document.getElementById('f-ciudad').value.trim();
+  const servicio = document.getElementById('f-servicio').value;
+
+  if (!nombre || !rfc || !email || !telefono || !ciudad || !servicio) {
+    alert('Completa todos los campos obligatorios de datos generales.');
+    return;
+  }
+
+  // Validar documentos obligatorios
+  const faltantes = validarDocs();
+  if (faltantes.length > 0) {
+    alert('Faltan ' + faltantes.length + ' documento(s) obligatorio(s). Revisa los campos marcados con *.');
+    return;
+  }
+
+  // UI: mostrar progreso
+  const btn = document.getElementById('btn-submit');
+  btn.disabled = true;
+  btn.textContent = 'Procesando...';
+  document.getElementById('progress-wrap').style.display = 'block';
+  setProgress(10, 'Preparando documentos...');
+
+  try {
+    // Convertir archivos a base64
+    const keys = Object.keys(archivosSeleccionados);
+    const archivosB64 = [];
+    for (let i = 0; i < keys.length; i++) {
+      const k = keys[i];
+      const file = archivosSeleccionados[k];
+      const ext  = file.name.split('.').pop();
+      const b64  = await toBase64(file);
+      archivosB64.push({
+        key:    k,
+        nombre: (NOMBRES_DOC[k] || k) + '.' + ext,
+        tipo:   file.type || 'application/octet-stream',
+        base64: b64,
+      });
+      setProgress(10 + Math.round((i + 1) / keys.length * 60), 'Subiendo documentos... ' + Math.round((i+1)/keys.length*100) + '%');
+    }
+
+    setProgress(75, 'Enviando expediente...');
+
+    const payload = {
+      nombre, rfc, email, telefono, ciudad, servicio,
+      regimen: regimeActual === 'fisica' ? 'Persona Física con Actividad Empresarial' : 'Persona Moral',
+      flota:   document.getElementById('f-flota').value.trim() || '—',
+      archivos: archivosB64,
+    };
+
+    const resp = await fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      body:   JSON.stringify(payload),
+    });
+
+    const result = await resp.json();
+    setProgress(100, 'Listo.');
+
+    if (result.ok) {
+      document.getElementById('form-body').style.display   = 'none';
+      document.getElementById('form-success').style.display = 'block';
+    } else {
+      throw new Error(result.error || 'Error desconocido');
+    }
+
+  } catch(err) {
+    alert('Ocurrió un error al enviar: ' + err.message + '\n\nIntenta de nuevo o escríbenos a daniel.ruvalcaba@99minutos.com');
+    btn.disabled = false;
+    btn.innerHTML = 'Enviar registro completo <span class="arrow">→</span>';
+    document.getElementById('progress-wrap').style.display = 'none';
+  }
+}
+
+function setProgress(pct, label) {
+  document.getElementById('progress-fill').style.width  = pct + '%';
+  document.getElementById('progress-label').textContent = label;
+}
+
+// Init
+selectRegime('fisica');
+</script>
+</body>
+</html>
