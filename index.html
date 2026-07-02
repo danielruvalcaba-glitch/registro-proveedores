@@ -555,7 +555,7 @@ body { font-family:'Barlow','Inter',sans-serif; background:#F2F2F0; display:flex
 
 <script>
 // ── CONFIGURACIÓN ── reemplaza con tu URL de Apps Script publicado
-const APPS_SCRIPT_URL = "https://script.google.com/a/macros/99minutos.com/s/AKfycbycnWd5IN6cMlpXhKwxgSNLiH3ToCoHqvHdrtXKFooFfS1FrTxC0KTAQf1IWEng14eSwA/exec";
+const APPS_SCRIPT_URL = "https://danielruvalcaba84.app.n8n.cloud/webhook/f2c2f708-b343-4b12-978a-3b8e878accfb";
 
 let regimeActual = "fisica";
 const archivosSeleccionados = {}; // { key: File }
@@ -678,16 +678,21 @@ async function enviarRegistro() {
 
     // Apps Script requiere mode: no-cors — no podemos leer la respuesta
     // pero si no lanza error, el envío fue exitoso
-    await fetch(APPS_SCRIPT_URL, {
+    const resp = await fetch(APPS_SCRIPT_URL, {
       method:  'POST',
-      mode:    'no-cors',
+      headers: { 'Content-Type': 'application/json' },
       body:    JSON.stringify(payload),
     });
 
+    const result = await resp.json();
     setProgress(100, 'Listo.');
-    // Con no-cors asumimos éxito si no hubo excepción
-    document.getElementById('form-body').style.display   = 'none';
-    document.getElementById('form-success').style.display = 'block';
+
+    if (result.ok !== false) {
+      document.getElementById('form-body').style.display   = 'none';
+      document.getElementById('form-success').style.display = 'block';
+    } else {
+      throw new Error(result.error || 'Error en el servidor');
+    }
 
   } catch(err) {
     alert('Ocurrió un error al enviar: ' + err.message + '\n\nIntenta de nuevo o escríbenos a daniel.ruvalcaba@99minutos.com');
